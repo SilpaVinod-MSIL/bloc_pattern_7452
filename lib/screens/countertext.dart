@@ -11,8 +11,13 @@ class CounterText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     return BlocBuilder<CounterBloc,CounterState>(
       builder: (context, state) {
+        if(state is CounterIntial){
+          context.read<CounterBloc>().add(InitialEvent());
+        }
         return Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -34,7 +39,7 @@ class CounterText extends StatelessWidget {
           ),
         );
       }
-    );
+   );
   }
 }
 
